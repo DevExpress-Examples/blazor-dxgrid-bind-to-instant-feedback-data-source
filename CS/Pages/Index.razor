@@ -1,0 +1,95 @@
+﻿@page "/"
+
+@using InstantFeedback.Models;
+@using Microsoft.EntityFrameworkCore
+@using DevExpress.Data.Linq
+@inject IDbContextFactory<NorthwindContext> NorthwindContextFactory
+@implements IDisposable
+
+<DxGrid Data="InstantFeedbackSource"
+        EditModelSaving="OnEditModelSaving"
+        DataItemDeleting="OnDataItemDeleting"
+        KeyFieldName="OrderId">
+    <Columns>
+        <DxGridCommandColumn />
+        <DxGridDataColumn FieldName="ShipName" />
+        <DxGridDataColumn FieldName="ShipCity" />
+        <DxGridDataColumn FieldName="ShipCountry" />
+        <DxGridDataColumn FieldName="Freight" />
+        <DxGridDataColumn FieldName="OrderDate" />
+        <DxGridDataColumn FieldName="ShippedDate" />
+    </Columns>
+    <EditFormTemplate Context="editFormContext">
+        @{
+            var order = (Order)editFormContext.EditModel;
+        }
+        <DxFormLayout>
+            <DxFormLayoutItem Caption="Ship Name:">
+                <DxTextBox @bind-Text="@order.ShipName" />
+            </DxFormLayoutItem>
+            <DxFormLayoutItem Caption="Ship City:">
+                <DxTextBox @bind-Text="@order.ShipCity" />
+            </DxFormLayoutItem>
+            <DxFormLayoutItem Caption="Ship Country:">
+                <DxTextBox @bind-Text="@order.ShipCountry" />
+            </DxFormLayoutItem>
+            <DxFormLayoutItem Caption="Freight:">
+                <DxSpinEdit @bind-Value="@order.Freight" />
+            </DxFormLayoutItem>
+            <DxFormLayoutItem Caption="Order Date:">
+                <DxDateEdit @bind-Date="@order.OrderDate" />
+            </DxFormLayoutItem>
+            <DxFormLayoutItem Caption="Shipped Date:">
+                <DxDateEdit @bind-Date="@order.ShippedDate" />
+            </DxFormLayoutItem>
+            <DxFormLayoutItem ColSpanMd="12">
+                <ValidationSummary />
+            </DxFormLayoutItem>
+        </DxFormLayout>
+    </EditFormTemplate>
+</DxGrid>
+@code {
+    EntityInstantFeedbackSource InstantFeedbackSource { get; set; }
+    NorthwindContext Northwind { get; set; }
+
+    protected override void OnInitialized() {
+        Northwind = NorthwindContextFactory.CreateDbContext();
+        InstantFeedbackSource = new EntityInstantFeedbackSource(e => {
+            e.KeyExpression = "OrderId";
+            e.QueryableSource = Northwind.Orders;
+        });
+    }
+    async Task OnEditModelSaving(GridEditModelSavingEventArgs e) {
+        var editModel = (Order)e.EditModel;
+        // Re-query a data item from the database.
+        var dataItem = e.IsNew ? new Order() : Northwind.Orders.Find(editModel.OrderId);
+        // Assign changes from the edit model to the data item.
+        if (dataItem != null) {
+            dataItem.ShipName = editModel.ShipName;
+            dataItem.ShipCity = editModel.ShipCity;
+            dataItem.ShipCountry = editModel.ShipCountry;
+            dataItem.Freight = editModel.Freight;
+            dataItem.OrderDate = editModel.OrderDate;
+            dataItem.ShippedDate = editModel.ShippedDate;
+            // Post changes to the database.
+            if (e.IsNew)
+                await Northwind.AddAsync(dataItem);
+            await Northwind.SaveChangesAsync();
+        }
+    }
+
+    async Task OnDataItemDeleting(GridDataItemDeletingEventArgs e) {
+        // Re-query a data item from the database.
+        var dataItem = Northwind.Orders.Find((e.DataItem as Order).OrderId);
+        if (dataItem != null) {
+            // Remove the data item from the database.
+            Northwind.Remove(dataItem);
+            await Northwind.SaveChangesAsync();
+        }
+    }
+
+    public void Dispose() {
+        InstantFeedbackSource?.Dispose();
+        Northwind?.Dispose();
+    }
+}
