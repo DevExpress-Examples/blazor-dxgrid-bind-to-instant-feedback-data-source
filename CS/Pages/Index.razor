@@ -80,7 +80,8 @@
 
     async Task OnDataItemDeleting(GridDataItemDeletingEventArgs e) {
         // Re-query a data item from the database.
-        var dataItem = Northwind.Orders.Find((e.DataItem as Order).OrderId);
+        var orderId = e.Grid.GetDataItemValue(e.DataItem, "OrderId");
+        var dataItem = Northwind.Orders.Find(orderId);
         if (dataItem != null) {
             // Remove the data item from the database.
             Northwind.Remove(dataItem);
