@@ -24,7 +24,7 @@ Follow the steps below to use the Entity Framework Core technology to bind the G
 
 2. Create a model for your database and register the database context.
 3. Register a [DbContext factory](https://learn.microsoft.com/en-us/ef/core/dbcontext-configuration/#using-a-dbcontext-factory-eg-for-blazor) in the `Program.cs` file.
-4. Add references to the model, data source, and data access technology namespaces to a page that displays the Grid component. Use the `@inject` Razor directive to inject the DbContext factory service into the component: 
+4. Add references to the model, data source, and data access technology namespaces to the page that displays the Grid component. Use the `@inject` Razor directive to inject the DbContext factory service into the component: 
 
     ```razor
     @using InstantFeedback.Models;
@@ -76,7 +76,7 @@ The Grid component supports multiple [edit modes](https://docs.devexpress.com/Bl
 
 3. The [EditModelSaving](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.EditModelSaving) event occurs after a user submits the edit form and validation is passed. Use the [EditModel](https://docs.devexpress.com/Blazor/DevExpress.Blazor.GridEditModelSavingEventArgs.EditModel) event argument to access the edit model that stores all changes. Copy the field values of the edit model to the corresponding fields of the [DataItem](https://docs.devexpress.com/Blazor/DevExpress.Blazor.GridEditModelSavingEventArgs.DataItem) event argument, then save changes to the bound data source. To assign all edit model field values to the data item fields simultaneously, you can call the [AutoMapper](https://github.com/AutoMapper/AutoMapper) library's `Map` method.
 
-4. The [DataItemDeleting](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.DataItemDeleting) event occurs when a user confirms the delete operation in the delete confirmation dialog. In the event handler, check user input and access permissions and post changes to the data source.
+4. The [DataItemDeleting](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.DataItemDeleting) event occurs once a user confirms the delete operation in the delete confirmation dialog. In the event handler, check user input and access permissions and post changes to the data source.
 
 5. If your data object has a primary key, assign it to the [KeyFieldName](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.KeyFieldName) or [KeyFieldNames](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.KeyFieldNames) property. If you do not specify these properties, the Grid uses standard [.NET value equality comparison](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/equality-comparisons) to identify data items.
 
