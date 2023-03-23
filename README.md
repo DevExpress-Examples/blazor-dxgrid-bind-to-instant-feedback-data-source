@@ -4,7 +4,7 @@
 <!-- default badges end -->
 # Grid for Blazor - How to bind the component to an Instant Feedback data source and enable edit operations
 
-This example demonstrates how to use [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/) data access technology to bind the [DevExpress Blazor Grid](https://docs.devexpress.com/Blazor/403143/grid) component to an [Instant Feedback data source](https://docs.devexpress.com/Blazor/403737/grid/bind-to-data#large-data-server-mode-sources). In the example, the Grid component allows you to add, edit, and delete data rows and validates input data.
+This example demonstrates how to use the [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/) data access technology to bind the [DevExpress Blazor Grid](https://docs.devexpress.com/Blazor/403143/grid) component to an [Instant Feedback data source](https://docs.devexpress.com/Blazor/403737/grid/bind-to-data#large-data-server-mode-sources). In the example, the Grid component allows you to add, edit, and delete data rows and validates input data.
 
 ![Bind the Grid to Instant Feedback Data Source](bind-to-instant-feedback-data-source.png)
 
@@ -14,7 +14,7 @@ Instant Feedback data sources are designed to work with large data collections. 
 
 ### Bind the Grid to an Instant Feedback Data Source
 
-Follow the steps below to use the Entity Framework Core technology to bind the Grid component to an Instant Feedback data source:
+Follow the steps below to use the the Entity Framework Core technology to bind the Grid component to an Instant Feedback data source:
 
 1. Install the following packages to your project:
 
@@ -32,7 +32,7 @@ Follow the steps below to use the Entity Framework Core technology to bind the G
     @using DevExpress.Data.Linq
     @inject IDbContextFactory<NorthwindContext> NorthwindContextFactory
     ```
-5. Create an instance of the [EntityInstantFeedbackSource](https://docs.devexpress.com/CoreLibraries/DevExpress.Data.Linq.EntityInstantFeedbackSource) class, specify its parameters, and bind it to the Grid's [Data](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.Data) property.
+5. Create an instance of the [EntityInstantFeedbackSource](https://docs.devexpress.com/CoreLibraries/DevExpress.Data.Linq.EntityInstantFeedbackSource) class, specify its parameters, and bind it to the Grid's [Data](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.Data) property:
 
     ```razor
     <DxGrid Data="InstantFeedbackSource">
@@ -68,7 +68,7 @@ Follow the steps below to use the Entity Framework Core technology to bind the G
 
 ### Enable Edit Operations
 
-The Grid component supports multiple [edit modes](https://docs.devexpress.com/Blazor/403454/grid/edit-data-and-validate-input#edit-modes). Follow the steps below to allow users to edit grid data in the edit form mode:
+The Grid component supports multiple [edit modes](https://docs.devexpress.com/Blazor/403454/grid/edit-data-and-validate-input#edit-modes). Follow the steps below to allow users to edit grid data in edit form mode:
 
 1. Declare a [DxGridCommandColumn](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGridCommandColumn) object in the Grid's [Columns](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.Columns) template. This column displays the predefined **New**, **Edit**, and **Delete** command buttons.
 
