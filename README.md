@@ -68,7 +68,7 @@ Follow the steps below to use the Entity Framework Core technology to bind the G
 
 ### Enable Edit Operations
 
-The Grid component supports multiple [edit modes](https://docs.devexpress.com/Blazor/403454/grid/edit-data-and-validate-input#edit-modes). Follow the steps below to allow users to edit grid data in the edit form:
+The Grid component supports multiple [edit modes](https://docs.devexpress.com/Blazor/403454/grid/edit-data-and-validate-input#edit-modes). Follow the steps below to allow users to edit grid data in the edit form mode:
 
 1. Declare a [DxGridCommandColumn](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGridCommandColumn) object in the Grid's [Columns](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.Columns) template. This column displays the predefined **New**, **Edit**, and **Delete** command buttons.
 
@@ -80,7 +80,7 @@ The Grid component supports multiple [edit modes](https://docs.devexpress.com/Bl
 
 5. If your data object has a primary key, assign it to the [KeyFieldName](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.KeyFieldName) or [KeyFieldNames](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.KeyFieldNames) property. If you do not specify these properties, the Grid uses standard [.NET value equality comparison](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/equality-comparisons) to identify data items.
 
-For detailed information on how to enable data editing and use edit-related options, refer to the following topic: [Edit Data and Validate Input](https://docs.devexpress.com/Blazor/403454/grid/edit-data-and-validate-input).
+Refer to the following topic for more information on how to enable edit operations and validate user input in the Grid control: [Edit Data and Validate Input](https://docs.devexpress.com/Blazor/403454/grid/edit-data-and-validate-input).
 
 ## Files to Review
 
