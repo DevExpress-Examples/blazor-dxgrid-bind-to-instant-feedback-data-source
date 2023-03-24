@@ -4,7 +4,7 @@
 <!-- default badges end -->
 # Grid for Blazor - How to bind the component to an Instant Feedback data source and enable edit operations
 
-This example demonstrates how to use the [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/) data access technology to bind the [DevExpress Blazor Grid](https://docs.devexpress.com/Blazor/403143/grid) component to an [Instant Feedback data source](https://docs.devexpress.com/Blazor/403737/grid/bind-to-data#large-data-server-mode-sources). In the example, the Grid component allows you to add, edit, and delete data rows and validates input data.
+This example demonstrates how to use the [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/) data access technology to bind the [DevExpress Blazor Grid](https://docs.devexpress.com/Blazor/403143/grid) component to an [Instant Feedback data source](https://docs.devexpress.com/Blazor/403737/grid/bind-to-data#large-data-server-mode-sources). In the example, you can add, edit, and delete data rows in the Grid component. The Grid validates input data and displays error messages.
 
 ![Bind the Grid to an Instant Feedback Data Source](bind-to-instant-feedback-data-source.png)
 
@@ -16,7 +16,7 @@ Instant Feedback data sources are designed to work with large data collections. 
 
 Follow the steps below to use the Entity Framework Core technology to bind the Grid component to an Instant Feedback data source:
 
-1. Install the following packages to your project:
+1. Add the following NuGet packages to your project:
 
     * [EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore)
     * [EntityFrameworkCore.Tools](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools/)
@@ -74,7 +74,7 @@ The Grid component supports multiple [edit modes](https://docs.devexpress.com/Bl
 
 2. Use the [EditFormTemplate](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.EditFormTemplate) property to define edit form content. Add the [ValidationSummary](https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.components.forms.validationsummary?view=aspnetcore-7.0) component to the edit form to validate user input based on [data annotation attributes](https://learn.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-7.0) defined in the model.
 
-3. The [EditModelSaving](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.EditModelSaving) event occurs after a user submits the edit form and validation is passed. Use the [EditModel](https://docs.devexpress.com/Blazor/DevExpress.Blazor.GridEditModelSavingEventArgs.EditModel) event argument to access the edit model that stores all changes. Copy the field values of the edit model to the corresponding fields of the [DataItem](https://docs.devexpress.com/Blazor/DevExpress.Blazor.GridEditModelSavingEventArgs.DataItem) event argument, then save changes to the bound data source. To assign all edit model field values to the data item fields simultaneously, you can call the [AutoMapper](https://github.com/AutoMapper/AutoMapper) library's `Map` method.
+3. The [EditModelSaving](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.EditModelSaving) event occurs after a user submits the edit form and validation is passed. Use the [EditModel](https://docs.devexpress.com/Blazor/DevExpress.Blazor.GridEditModelSavingEventArgs.EditModel) event argument to access the edit model that stores all changes. Copy the values of all edit model fields that can be changed to the corresponding fields of the [DataItem](https://docs.devexpress.com/Blazor/DevExpress.Blazor.GridEditModelSavingEventArgs.DataItem) event argument, then save changes to the bound data source. To assign all edit model field values to the data item fields simultaneously, you can call the [AutoMapper](https://github.com/AutoMapper/AutoMapper) library's `Map` method.
 
 4. The [DataItemDeleting](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.DataItemDeleting) event occurs once a user confirms the delete operation in the delete confirmation dialog. In the event handler, check user input and access permissions and post changes to the data source.
 
