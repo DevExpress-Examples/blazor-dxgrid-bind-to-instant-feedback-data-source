@@ -6,15 +6,15 @@
 
 This example demonstrates how to use the [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/) data access technology to bind the [DevExpress Blazor Grid](https://docs.devexpress.com/Blazor/403143/grid) component to an [Instant Feedback data source](https://docs.devexpress.com/Blazor/403737/grid/bind-to-data#large-data-server-mode-sources). In the example, the Grid component allows you to add, edit, and delete data rows and validates input data.
 
-![Bind the Grid to Instant Feedback Data Source](bind-to-instant-feedback-data-source.png)
+![Bind the Grid to an Instant Feedback Data Source](bind-to-instant-feedback-data-source.png)
 
 ## Overview
 
-Instant Feedback data sources are designed to work with large data collections. They load data in small portions on demand in background threads and do not freeze the Grid UI. Instant Feedback data sources help you to reduce memory consumption, but have multiple limitations. Refer to the following topic for more information: [Server Mode Sources - Common Specifics and Limitations](https://docs.devexpress.com/Blazor/403737/grid/bind-to-data#common-specifics-and-limitations).
+Instant Feedback data sources are designed to work with large data collections. They load data in small portions on demand in background threads and do not freeze the Grid UI. Instant Feedback data sources help you to reduce memory consumption but impose multiple limitations. Refer to the following topic for more information: [Server Mode Sources - Common Specifics and Limitations](https://docs.devexpress.com/Blazor/403737/grid/bind-to-data#common-specifics-and-limitations).
 
 ### Bind the Grid to an Instant Feedback Data Source
 
-Follow the steps below to use the the Entity Framework Core technology to bind the Grid component to an Instant Feedback data source:
+Follow the steps below to use the Entity Framework Core technology to bind the Grid component to an Instant Feedback data source:
 
 1. Install the following packages to your project:
 
@@ -72,7 +72,7 @@ The Grid component supports multiple [edit modes](https://docs.devexpress.com/Bl
 
 1. Declare a [DxGridCommandColumn](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGridCommandColumn) object in the Grid's [Columns](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.Columns) template. This column displays the predefined **New**, **Edit**, and **Delete** command buttons.
 
-2. Use the [EditFormTemplate](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.EditFormTemplate) property to define the edit form content. Add the [ValidationSummary](https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.components.forms.validationsummary?view=aspnetcore-7.0) component to the edit form to validate user input based on [data annotation attributes](https://learn.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-7.0) defined in the model.
+2. Use the [EditFormTemplate](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.EditFormTemplate) property to define edit form content. Add the [ValidationSummary](https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.components.forms.validationsummary?view=aspnetcore-7.0) component to the edit form to validate user input based on [data annotation attributes](https://learn.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-7.0) defined in the model.
 
 3. The [EditModelSaving](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.EditModelSaving) event occurs after a user submits the edit form and validation is passed. Use the [EditModel](https://docs.devexpress.com/Blazor/DevExpress.Blazor.GridEditModelSavingEventArgs.EditModel) event argument to access the edit model that stores all changes. Copy the field values of the edit model to the corresponding fields of the [DataItem](https://docs.devexpress.com/Blazor/DevExpress.Blazor.GridEditModelSavingEventArgs.DataItem) event argument, then save changes to the bound data source. To assign all edit model field values to the data item fields simultaneously, you can call the [AutoMapper](https://github.com/AutoMapper/AutoMapper) library's `Map` method.
 
