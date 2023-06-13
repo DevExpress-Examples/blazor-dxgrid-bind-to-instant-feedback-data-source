@@ -20,27 +20,24 @@
         <DxGridDataColumn FieldName="ShippedDate" />
     </Columns>
     <EditFormTemplate Context="editFormContext">
-        @{
-            var order = (Order)editFormContext.EditModel;
-        }
         <DxFormLayout>
             <DxFormLayoutItem Caption="Ship Name:">
-                <DxTextBox @bind-Text="@order.ShipName" />
+                @editFormContext.GetEditor("ShipName")
             </DxFormLayoutItem>
             <DxFormLayoutItem Caption="Ship City:">
-                <DxTextBox @bind-Text="@order.ShipCity" />
+                @editFormContext.GetEditor("ShipCity")
             </DxFormLayoutItem>
             <DxFormLayoutItem Caption="Ship Country:">
-                <DxTextBox @bind-Text="@order.ShipCountry" />
+                @editFormContext.GetEditor("ShipCountry")
             </DxFormLayoutItem>
             <DxFormLayoutItem Caption="Freight:">
-                <DxSpinEdit @bind-Value="@order.Freight" />
+                @editFormContext.GetEditor("Freight")
             </DxFormLayoutItem>
             <DxFormLayoutItem Caption="Order Date:">
-                <DxDateEdit @bind-Date="@order.OrderDate" />
+                @editFormContext.GetEditor("OrderDate")
             </DxFormLayoutItem>
             <DxFormLayoutItem Caption="Shipped Date:">
-                <DxDateEdit @bind-Date="@order.ShippedDate" />
+                @editFormContext.GetEditor("ShippedDate")
             </DxFormLayoutItem>
             <DxFormLayoutItem ColSpanMd="12">
                 <ValidationSummary />
