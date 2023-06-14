@@ -1,5 +1,5 @@
 ﻿@page "/"
-
+@using AutoMapper
 @using InstantFeedback.Models;
 @using Microsoft.EntityFrameworkCore
 @using DevExpress.Data.Linq
@@ -48,6 +48,7 @@
 @code {
     EntityInstantFeedbackSource InstantFeedbackSource { get; set; }
     NorthwindContext Northwind { get; set; }
+    IMapper ProductMapper { get; set; }
 
     protected override void OnInitialized() {
         Northwind = NorthwindContextFactory.CreateDbContext();
@@ -55,6 +56,8 @@
             e.KeyExpression = "OrderId";
             e.QueryableSource = Northwind.Orders;
         });
+        var config = new MapperConfiguration(c => c.CreateMap<Order, Order>());
+        ProductMapper = config.CreateMapper();
     }
     async Task OnEditModelSaving(GridEditModelSavingEventArgs e) {
         var editModel = (Order)e.EditModel;
@@ -62,12 +65,7 @@
         var dataItem = e.IsNew ? new Order() : Northwind.Orders.Find(editModel.OrderId);
         // Assign changes from the edit model to the data item.
         if (dataItem != null) {
-            dataItem.ShipName = editModel.ShipName;
-            dataItem.ShipCity = editModel.ShipCity;
-            dataItem.ShipCountry = editModel.ShipCountry;
-            dataItem.Freight = editModel.Freight;
-            dataItem.OrderDate = editModel.OrderDate;
-            dataItem.ShippedDate = editModel.ShippedDate;
+            ProductMapper.Map<Order, Order>(editModel, dataItem);
             // Post changes to the database.
             if (e.IsNew)
                 await Northwind.AddAsync(dataItem);
