@@ -21,7 +21,7 @@ Follow the steps below to use the Entity Framework Core technology to bind the G
 
     * [EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore)
     * [EntityFrameworkCore.Tools](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools/)
-    * [EntityFrameworkCore.SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/)
+    * [EntityFrameworkCore.Sqlite](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Sqlite/)
 
 2. Create a model for your database and register the database context.
 3. Register a [DbContext factory](https://learn.microsoft.com/en-us/ef/core/dbcontext-configuration/#using-a-dbcontext-factory-eg-for-blazor) in the `Program.cs` file.
