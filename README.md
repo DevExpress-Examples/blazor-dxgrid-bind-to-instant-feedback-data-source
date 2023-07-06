@@ -73,15 +73,13 @@ The Grid component supports multiple [edit modes](https://docs.devexpress.com/Bl
 
 1. Declare a [DxGridCommandColumn](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGridCommandColumn) object in the Grid's [Columns](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.Columns) template. This column displays the predefined **New**, **Edit**, and **Delete** command buttons.
 
-2. Use the [EditFormTemplate](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.EditFormTemplate) property to define edit form content. Add the [ValidationSummary](https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.components.forms.validationsummary?view=aspnetcore-7.0) component to the edit form to validate user input based on [data annotation attributes](https://learn.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-7.0) defined in the model.
+2. Use the [EditFormTemplate](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.EditFormTemplate) property to define edit form content.
 
 3. The [EditModelSaving](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.EditModelSaving) event occurs after a user submits the edit form and validation is passed. Use the [EditModel](https://docs.devexpress.com/Blazor/DevExpress.Blazor.GridEditModelSavingEventArgs.EditModel) event argument to access the edit model that stores all changes. Copy the values of all edit model fields that can be changed to the corresponding fields of the [DataItem](https://docs.devexpress.com/Blazor/DevExpress.Blazor.GridEditModelSavingEventArgs.DataItem) event argument, then save changes to the bound data source. To assign all edit model field values to the data item fields simultaneously, you can call the [AutoMapper](https://github.com/AutoMapper/AutoMapper) library's `Map` method.
 
 4. The [DataItemDeleting](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.DataItemDeleting) event occurs once a user confirms the delete operation in the delete confirmation dialog. In the event handler, check user input and access permissions and post changes to the data source.
 
 5. If your data object has a primary key, assign it to the [KeyFieldName](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.KeyFieldName) or [KeyFieldNames](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.KeyFieldNames) property. If you do not specify these properties, the Grid uses standard [.NET value equality comparison](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/equality-comparisons) to identify data items.
-
-Refer to the following topic for more information on how to enable edit operations and validate user input in the Grid control: [Edit Data and Validate Input](https://docs.devexpress.com/Blazor/403454/grid/edit-data-and-validate-input).
 
 ## Files to Review
 
@@ -94,7 +92,8 @@ Refer to the following topic for more information on how to enable edit operatio
 
 - [Bind to Data](https://docs.devexpress.com/Blazor/403737/grid/bind-to-data)
 - [Bind Components to Data with Entity Framework Core](https://docs.devexpress.com/Blazor/403167/common-concepts/bind-data-grid-to-data-from-entity-framework-core)
-- [Edit Data and Validate Input](https://docs.devexpress.com/Blazor/403454/grid/edit-data-and-validate-input)
+- [Edit Data](https://docs.devexpress.com/Blazor/403454/components/grid/edit-data)
+- [Validate User Input](https://docs.devexpress.com/Blazor/404443/components/grid/validation)
 - [Examples](https://docs.devexpress.com/Blazor/404035/grid/examples)
 
 ## More Examples
