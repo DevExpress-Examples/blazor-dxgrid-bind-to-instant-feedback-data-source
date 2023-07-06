@@ -17,11 +17,11 @@ namespace InstantFeedback.Models {
 
         public decimal? Freight { get; set; }
 
-        [Range(typeof(DateTime), "1/1/1996", "1/1/1999",
+        [Range(typeof(DateTime), "1/1/2010", "1/1/2024",
         ErrorMessage = "OrderDate must be between {1:d} and {2:d}")]
         public DateTime? OrderDate { get; set; }
 
-        [Range(typeof(DateTime), "1/1/1996", "1/1/1999",
+        [Range(typeof(DateTime), "1/1/2010", "1/1/2024",
         ErrorMessage = "ShippedDate must be between {1:d} and {2:d}")]
         public DateTime? ShippedDate { get; set; }
     }
