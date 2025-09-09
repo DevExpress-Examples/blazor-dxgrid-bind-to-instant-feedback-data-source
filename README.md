@@ -25,7 +25,7 @@ Follow the steps below to use the Entity Framework Core technology to bind the G
     * [EntityFrameworkCore.Sqlite](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Sqlite/)
 
 2. Create a model for your database and register the database context.
-3. Register a [DbContext factory](https://learn.microsoft.com/en-us/ef/core/dbcontext-configuration/#using-a-dbcontext-factory-eg-for-blazor) in the `Program.cs` file.
+3. Register a [DbContext factory](https://learn.microsoft.com/en-us/ef/core/dbcontext-configuration/#use-a-dbcontext-factory) in the `Program.cs` file.
 4. Add references to the model, data source, and data access technology namespaces to the page that displays the Grid component. Use the `@inject` Razor directive to inject the DbContext factory service into the component: 
 
     ```razor
@@ -110,3 +110,4 @@ Refer to the following topic for more information on how to enable edit operatio
 
 (you will be redirected to DevExpress.com to submit your response)
 <!-- feedback end -->
+
