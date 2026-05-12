@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "InstantFeedback": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:2166;http://localhost:2167"
+    }
+  }
+}
