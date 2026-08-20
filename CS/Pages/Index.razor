@@ -59,8 +59,7 @@
             editModel.OrderId = (Northwind.Orders.Any() ? Northwind.Orders.Max(o => o.OrderId) : 0) + 1;
             await Northwind.AddAsync(editModel);
         } else {
-            // Re-query a data item from the database and copy changes from the edit model to it.
-            var dataItem = Northwind.Orders.Find(editModel.OrderId);
+            // Copy changes from the edit model to the data item.
             e.CopyChangesToDataItem();
         }
         // Post changes to the database.
